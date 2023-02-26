@@ -1,34 +1,424 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --main-color: #bf00ff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow-x: hidden;
+  
+  width: 100vw;
+  height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#app-header {
+  display: flex;
+  justify-content: space-between;
+  
+  width: 100%;
+
+  padding: 1rem 0;
+
+  background-color: #000000;
+}
+
+#app-header #app-menu {
+  position: relative;
+
+  color: white;
+}
+
+#app-header #app-menu #menu {
+  position: absolute;
+  left: -250%;
+
+  padding: 1.5rem;
+
+  list-style: none;
+
+  background-color: #1a1a1a;
+}
+
+#app-header #app-menu #menu li a {
+  text-decoration: none;
+  color: white
+}
+
+#app-header #app-menu #menu #submenu {
+  background-color: #4d4d4d;
+
+  list-style: none;
+}
+
+#app-header #app-title {
+  font-family: SippinOnSunshine;
+  color: var(--main-color);
+
+  font-size: xx-large;
+}
+
+#app-header #app-logo img {
+  width: 8rem;
+  height: auto;
+}
+
+#app-header input[type="file"] {
+  display: none;
+}
+
+#app-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+#player {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+  height: 100%;
+  flex: 1 1;
+}
+
+#player::before {
+  content: "";
+  position: absolute;
+
+  z-index: -1;
+
+  width: 100%;
+  height: 100%;
+
+  background: url("/src/images/player_background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  filter: brightness(10%);
+}
+
+#player #player-frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 1rem;
+
+  background-color: rgba(255, 255, 255, 0.5);
+
+  padding: 2rem;
+
+  width: max-content;
+  height: max-content;
+}
+
+#player-frame #song-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#song-info {
+  display: flex;
+  flex-direction: column;
+
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#song-info #song-name {
+  font-weight: bolder;
+
+  font-size: larger;
 }
 
-@keyframes App-logo-spin {
+#player-frame #song-options {
+  display: flex;
+  align-items: center;
+}
+
+
+#album-cover {
+  background-color: #4d4d4d;
+
+  padding: 1rem;
+}
+
+#album-cover img {
+  width: 17rem;
+  height: auto;
+}
+
+#song-progress {
+  display: flex;
+  
+  width: 90%;
+}
+
+#song-progress input[type="range"] {
+  width: 90%;
+}
+
+#playlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 20%;
+  height: 100%;
+
+  padding: 1rem 2rem;
+
+  background-color: black;
+  
+  color: white;
+}
+
+#playlist #playlist-info {
+  display: flex;
+
+  gap: 1rem;
+  width: 90%;
+}
+
+#playlist #playlist-info #playlist-cover{
+  align-self: flex-start;
+
+  width: 40%;
+}
+
+#playlist #playlist-info #playlist-cover img {
+  width: 100%;
+  height: auto;
+}
+
+#playlist #playlist-literal-info {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1 1;
+}
+
+#playlist #playlist-literal-info #playlist-options {
+  display: flex;
+}
+
+#playlist #playlist-literal-info #playlist-options button {
+  border: none;
+  border-radius: 50%;
+
+  padding: 0.5rem;
+
+  background-color: transparent;
+
+  color: var(--main-color);
+
+  cursor: pointer;
+}
+
+#playlist #songs-list {
+  display: flex;
+  flex-direction: column;
+
+  width: 90%;
+  height: 50vh;
+
+  overflow-y: auto;
+
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+#playlist #songs-list::-webkit-scrollbar {
+  width: 0.3rem;
+
+  border-radius: 1rem;
+  background-color: #e699ff;
+}
+
+#playlist #songs-list::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+}
+
+#playlist #songs-list .song {
+  display: flex;
+  align-items: center;
+
+  width:  100%;
+  gap: 1rem;
+  padding: 0.5rem;
+  border: 0.1rem solid var(--main-color);
+  border-radius: 0.5rem;
+
+  cursor: pointer;
+}
+
+.song:hover {
+  box-shadow: 0px 0px 2rem -0.5rem var(--main-color);
+}
+
+.song .song-album-cover {
+  width: 2rem;
+  height: auto;
+}
+
+#playlist #playlist-info #playlist-name {
+  font-size: medium;
+}
+
+#playlist #playlist-info #playlist-description {
+  font-size: small;
+}
+
+#playlist #playlist-footer {
+  display: flex;
+  gap: 1rem;
+
+  font-size: smaller;
+  color: gray;
+
+  width: max-content;
+}
+
+
+#song-progress #song-duration {
+  display: flex;
+  color: white;
+}
+
+.button {
+  border: 0.1rem solid var(--main-color);
+  color: var(--main-color);
+  background-color: transparent;
+
+  padding: 0.3rem;
+}
+
+.button-player {
+  background-color: transparent;
+
+  color: white;
+
+  border: none;
+
+  font-size: 2rem;
+
+  padding: 0.5rem;
+
+  cursor: pointer;
+}
+
+.button-player.small {
+  font-size: 1rem;
+}
+
+.spin {
+  animation: spin 1s infinite normal linear;
+}
+
+.not-render {
+  display: none;
+}
+
+.modal {
+  background-color: #282a36;
+  color: white;
+
+  margin: 0;
+}
+
+.modal input[type="text"] {
+  border: none;
+  border-radius: 0.3rem;
+}
+
+.modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+
+  border-bottom: 0.3rem solid black;
+
+  padding: 0.3rem;
+}
+
+.modal .modal-header button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+
+  font-size: medium;
+}
+
+.modal .modal-content {
+  padding: 0.8rem;
+}
+
+#new-playlist-modal .modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 2rem;
+}
+
+#new-playlist-modal .modal-content > label {
+  font-size: large;
+}
+
+#new-playlist-modal .modal-content #playlist-data .playlist-info {
+  display: flex;
+  gap: 1rem;
+}
+
+#loading-modal .modal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#loading-modal .modal-content #loading-bar {
+  width: 80%;
+  height: 2rem;
+
+  background-color: white;
+}
+
+#loading-modal .modal-content #loading-bar #progress-bar {
+  background-color: var(--main-color);
+
+  width: 50%;
+  height: 100%;
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+.disabled * {
+  color: #CCCCCC;
+}
+
+@font-face {
+  font-family: SippinOnSunshine;
+  src: url("/src/fonts/SippinOnSunshine.otf");
+}
+
+@keyframes spin {
   from {
     transform: rotate(0deg);
   }

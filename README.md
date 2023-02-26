@@ -1,3 +1,12 @@
+Music Player
+
+
+-Create account
+-Create playlist
+-Share playlist link based on ID
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
