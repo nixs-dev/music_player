@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Music Player
 
 
@@ -77,3 +78,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# music_player
+Music Player with ReactJS
+>>>>>>> 7f36986260c3d5dfdb8449ded78f971838841a57
